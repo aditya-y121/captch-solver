@@ -98,6 +98,7 @@ if __name__ == "__main__":
                 current_preds = decode_predictions(vp, l_enc)
                 valid_captcha_preds.extend(current_preds)
             eval_loss /= len(valid_dl)
+            test_dup_rem = [remove_duplicates(c) for c in test_targets_orig]
             accuracy = metrics.accuracy_score(test_dup_rem, valid_captcha_preds)
             print(
                 f"Epoch={epoch}, Train Loss={train_loss}, Test Loss={eval_loss} Accuracy={accuracy}",
